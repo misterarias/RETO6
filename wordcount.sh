@@ -1,5 +1,6 @@
 #!/bin/sh
-wget http://latel.upf.edu/traductica/scp/quijote/quijote.txt > quijote.txt
+[ ! -f quijote.txt ] && \
+  wget http://latel.upf.edu/traductica/scp/quijote/quijote.txt > quijote.txt
 docker cp quijote.txt namenode:/tmp/
 docker exec -ti namenode hadoop fs -rm -R -f /tmp/
 docker exec -ti namenode hadoop fs -mkdir /tmp/
